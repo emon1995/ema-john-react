@@ -7,8 +7,8 @@ const Product = (props) => {
 
   return (
     <>
-      <div className="card w-full bg-base-100 shadow-2xl relative">
-        <figure className="px-4 lg:px-10 pt-10">
+      <div className="card w-full bg-base-300 shadow-2xl relative">
+        <figure className="px-4 lg:px-6 pt-6">
           <img src={img && img} alt="Shoes" className="rounded-xl" />
         </figure>
         <div className=" items-start text-left">

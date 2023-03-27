@@ -18,7 +18,7 @@ const Shop = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setProducts(data);
       })
       .catch((e) => {
@@ -30,7 +30,7 @@ const Shop = () => {
     <div className="flex flex-col-reverse gap-4  lg:flex-row lg:justify-between ">
       {/* PRODUCTS */}
       <div className="  lg:w-[70%]  mx-4 lg:p-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-4">
-        {products.slice(0, 6).map((product) => (
+        {products.slice(0, 10).map((product) => (
           <Product
             key={product.id}
             product={product}
