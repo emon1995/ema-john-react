@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const [error, setError] = useState("");
+  const { createUser } = useContext(AuthContext);
+
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -10,6 +14,23 @@ const Register = () => {
     const password = form.password.value;
     const confirm = form.confirm.value;
     console.log(confirm, email, password);
+    setError("");
+    form.reset();
+
+    if (password.length < 6) {
+      return setError("Password at least 6 character");
+    } else if (password !== confirm) {
+      return setError("Password doesn't match.");
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (
@@ -35,7 +56,7 @@ const Register = () => {
           Already have an account? <Link to="/login">Login</Link>
         </small>
       </p>
-      {/* <p className="text-error">{error}</p> */}
+      <p className="text-error">{error}</p>
     </div>
   );
 };

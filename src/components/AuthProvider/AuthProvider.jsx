@@ -11,8 +11,13 @@ const AuthProvider = ({ children }) => {
     displayName: "emon",
   };
 
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
   const userInfo = {
     user,
+    createUser,
   };
 
   return (
