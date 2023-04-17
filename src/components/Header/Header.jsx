@@ -6,13 +6,13 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const { user, logout } = useContext(AuthContext);
-  // console.log(user.email);
+  const { user, logOut } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
     console.log("click");
-    logout()
+    logOut()
       .then((result) => {
         navigate("/");
       })
@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <nav className="header">
-      <img src={logo} alt="" />
+      <img src={logo} alt="logo" />
       <div className="header-item">
         <ActiveLink to={`/`}>Shop</ActiveLink>
         <ActiveLink to="/orders">Orders</ActiveLink>
@@ -36,7 +36,7 @@ const Header = () => {
         )}
         {user && (
           <>
-            <ActiveLink>{user.email}</ActiveLink>
+            <ActiveLink>{user?.email}</ActiveLink>
             <p onClick={handleLogout}>Logout</p>
           </>
         )}
