@@ -16,3 +16,14 @@ nav.header a {
 nav.header a:hover {
   color: orange;
 }
+
+.header-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.header-item p {
+  cursor: pointer;
+}
